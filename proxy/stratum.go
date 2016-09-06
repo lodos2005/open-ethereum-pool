@@ -136,6 +136,8 @@ func (cs *Session) handleTCPMessage(s *ProxyServer, req *StratumReq) error {
 	case "eth_submitHashrate":
 		return cs.sendTCPResult(req.Id, true)
 	// NICEHASH STRATUM
+	case "mining.subscribe":
+		return cs.sendTCPResult(req.Id, true)
 	case "mining.authorize":
 		var params []string
 		err := json.Unmarshal(*req.Params, &params)
